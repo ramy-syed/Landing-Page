@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div id="main">
+        <div id="top">
+            <div id="overlay">
+                
+                <div id="rows">
+
+                    <div id="col1">
+                        <div id="text">
+                            <p id="content">Curious about the book <h1>The Silent Patient?</h1></p>
+                            <div id="det">
+                                <p>Here's all that you need!</p>
+                                <div id="links">
+                                    <a href="https://t.me/h0p3Shizil_ramy" target="_main"><i class="fa-brands fa-telegram"></i></a>
+                                    <a href="https://www.instagram.com/literari_ramy" target="_main"><i class="fa-brands fa-instagram"></i></a>
+                                    <a href="mailto:rameezasyeda9@gmail.com" target="_main"><i class="fa-solid fa-envelope"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="col2">
+                        <img src="image/book.png">
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+        
+
+
+        <div id="bottom">
+            <div id="one">
+
+                    <div id="cont">
+
+                        <div>
+                            <h3>Get the book</h3>
+                            <p>Buy this book along with a free bookmark</p>
+                            <br>
+                            <a href="https://bookmarkandworld.com/products/the-silent-patient-by-alex-michaelides?_pos=1&_psq=the+silent+pati&_ss=e&_v=1.0" target="_main">click here</a>
+                        </div>
+
+                    </div>  
+
+            </div>
+            <div id="two">
+
+                <div id="cont">
+
+                    <h3>About the book</h3>
+                    <p>It is a psychological thriller about a woman who shoots her husband and then refuses to speak, and the therapist who tries to uncover her motive</p>
+                    <br>
+                    <a href="https://en.wikipedia.org/wiki/The_Silent_Patient" target="_main">learn more</a>
+
+                </div>
+
+            </div>
+
+            <div id="three">
+                
+                <div id="cont">
+
+                    <h3>About the Author</h3>
+                    <p>Alex Michaelides is a bestselling British Cypriot author and screenwriter.</p>
+                    <br>
+                    <a href="https://en.wikipedia.org/wiki/Alex_Michaelides" target="_main">learn more</a>
+
+                </div>
+
+            </div>
+
+
+            <div id="four">
+                <div class="conts">
+                    <h3>Got any Query?</h3>
+                    <div class="forms">
+                        <form name="submit-to-google-sheet">
+                            <div class="texts">
+                                <input type="text" name="Name" placeholder="Your Name" required>
+                                <input type="email" name="email" placeholder="Your email" required>
+                                <textarea name="Message" rows="3" placeholder="Your Query"></textarea>
+                                <br>
+                            </div>
+                            <button type="submit">Send</button>
+                        </form>
+                    </div>
+                    <span id="msg"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+ 
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbxZsxkezV6YY2uE6U2tyymo2cPSWRXxvkB2T7S6q6J34Pvym03q716ohba9klE8KRjDTQ/exec'
+        const form = document.forms['submit-to-google-sheet']
+        const msg = document.getElementById("msg")
+      
+        form.addEventListener('submit', e => {
+          e.preventDefault()
+          fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => {
+                msg.innerHTML = "Sent Successfully!"
+                setTimeout(function(){
+                    msg.innerHTML = ""
+                },5000)
+                form.reset()
+            })
+            .catch(error => console.error('Error!', error.message))
+        })
+      </script>
+
+</body>
+</html>
